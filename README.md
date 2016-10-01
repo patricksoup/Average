@@ -7,7 +7,9 @@ I made this for a school project. Don't Judge.
 Do whatever you want with it, except make money: _No Adverts Or Selling!_
 
 This project uses modified code from:
-*EasyGui version 0.97*
+*EasyGui*
+
+*version 0.97*
 
 *Copyright (c) 2014, Stephen Raymond Ferg*
 
