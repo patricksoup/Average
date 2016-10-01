@@ -1,13 +1,17 @@
 """
 Backend for Average Calculator
 by PatrickSoup
-
+v 1.0
 """
 
 
-# Get mean of numbers
+from collections import Counter
+import math
+
+
+# get mean of numbers
 def mean(numbers):
-    # Mean: Divide total by count
+    # mean: divide total by count
     answer = 0
     for i in numbers:
         answer += i         # add all numbers
@@ -18,8 +22,38 @@ def mean(numbers):
 # Get mode of numbers
 def mode(numbers):
     # Mode: Most common number
-    answer = 0
+    # TODO: Do it myself
+    data = Counter(numbers)  # use collections.Counter to work out
+    answer = data.most_common(1)  # returns the highest occurring item
+    return answer[0][0]
 
+
+def median(numbers):
+    # Median: Middle number
+    numbers = sorted(numbers)  # sort in order
+    length = len(numbers)  # find length
+
+    if length % 2 == 0:  # is even number
+        index1 = length/2  # find first of 2 middles as if was 1-indexed, or, 2nd as 0-indexed (as is)
+        index2 = index1-1  # find second middle (0-indexed)
+        value1 = numbers[index1]  # find value with index
+        value2 = numbers[index2]  # ditto ^
+        answer = mean([value1, value2])  # get mean because even number
+
+        return answer
+    else:  # is odd number
+        index = length/2
+        index = math.ceil(index)  # find middle as if was 1-indexed
+        index -= 1  # turn into 0-indexed value
+
+        return numbers[index]
+
+
+def range_(numbers):
+    # difference between highest and lowest in list
+    small = min(numbers)  # find smallest
+    large = max(numbers)  # find largest
+    answer = large - small  # find difference
     return answer
 
 
@@ -38,3 +72,6 @@ def _test():
     _range = str(_range)
     # concatenate and print
     print('mean=', _mean, '\nmode=', _mode, '\nmedian=', _median, '\nrange=', _range)
+
+if __name__ == "__main__":
+    _test()
